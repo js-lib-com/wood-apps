@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+	<display-name>j(s)-lib Server Manager</display-name>
+	<description>j(s)-lib Server Manager</description>
+
+	<listener>
+		<listener-class>js.tiny.container.servlet.TinyContainer</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>rmi-servlet</servlet-name>
+		<servlet-class>js.tiny.container.net.HttpRmiServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>rmi-servlet</servlet-name>
+		<url-pattern>*.rmi</url-pattern>
+	</servlet-mapping>
+</web-app>

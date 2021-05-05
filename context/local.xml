@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="true" cachingAllowed="false" antiResourceLocking="false" cacheTTL="0">
+    <Parameter name="server.doc.root" value="/var/www/atlas.kids-cademy.com/" />
+</Context>
