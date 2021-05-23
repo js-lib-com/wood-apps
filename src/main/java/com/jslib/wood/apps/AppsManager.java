@@ -35,7 +35,7 @@ public class AppsManager {
 
 	@RequestPath("dirty-files")
 	public List<String> getDirtyFiles(String targetDir, SortedMap<String, byte[]> sourceFiles, boolean removeStaleFiles) throws IOException {
-		String docRoot = apache.getFile(targetDir).getPath();
+		String docRoot = apache.getProjectRoot(targetDir).getPath();
 		List<String> dirtyFiles = new ArrayList<String>();
 
 		SortedMap<String, byte[]> targetFiles = new TreeMap<String, byte[]>();
@@ -127,7 +127,7 @@ public class AppsManager {
 
 	@RequestPath("synchronize")
 	public void synchronize(String targetDir, FilesInputStream files) throws IOException {
-		File docRoot = apache.getFile(targetDir);
+		File docRoot = apache.getProjectRoot(targetDir);
 		if (!docRoot.exists()) {
 			badFilesArchive("Target directory |%s| does not exist.", docRoot);
 		}
