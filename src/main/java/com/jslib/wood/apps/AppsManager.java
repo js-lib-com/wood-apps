@@ -10,18 +10,19 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import javax.annotation.security.PermitAll;
+import javax.ejb.Singleton;
+import javax.ws.rs.Path;
+
 import js.io.FilesInputStream;
 import js.io.FilesIterator;
 import js.log.Log;
 import js.log.LogFactory;
-import js.tiny.container.annotation.Public;
-import js.tiny.container.annotation.RequestPath;
-import js.tiny.container.annotation.Service;
 import js.tiny.container.core.AppContext;
 import js.util.Files;
 
-@Service
-@Public
+@Singleton
+@PermitAll
 public class AppsManager {
 	private static final Log log = LogFactory.getLog(AppsManager.class);
 
@@ -33,7 +34,7 @@ public class AppsManager {
 		this.apache = apache;
 	}
 
-	@RequestPath("dirty-files")
+	@Path("dirty-files")
 	public List<String> getDirtyFiles(String targetDir, SortedMap<String, byte[]> sourceFiles, boolean removeStaleFiles) throws IOException {
 		String docRoot = apache.getProjectRoot(targetDir).getPath();
 		List<String> dirtyFiles = new ArrayList<String>();
@@ -125,7 +126,7 @@ public class AppsManager {
 		}
 	}
 
-	@RequestPath("synchronize")
+	@Path("synchronize")
 	public void synchronize(String targetDir, FilesInputStream files) throws IOException {
 		File docRoot = apache.getProjectRoot(targetDir);
 		if (!docRoot.exists()) {
