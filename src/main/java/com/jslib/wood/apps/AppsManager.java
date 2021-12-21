@@ -11,14 +11,15 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import javax.annotation.security.PermitAll;
-import javax.ejb.Singleton;
+import javax.inject.Singleton;
 import javax.ws.rs.Path;
 
 import js.io.FilesInputStream;
 import js.io.FilesIterator;
 import js.log.Log;
 import js.log.LogFactory;
-import js.tiny.container.core.AppContext;
+import js.tiny.container.servlet.ITinyContainer;
+import js.tiny.container.servlet.RequestContext;
 import js.util.Files;
 
 @Singleton
@@ -26,11 +27,11 @@ import js.util.Files;
 public class AppsManager {
 	private static final Log log = LogFactory.getLog(AppsManager.class);
 
-	private final AppContext context;
+	private final ITinyContainer container;
 	private final ApacheHttpd apache;
 
-	public AppsManager(AppContext context, ApacheHttpd apache) {
-		this.context = context;
+	public AppsManager(ITinyContainer container, ApacheHttpd apache) {
+		this.container = container;
 		this.apache = apache;
 	}
 
@@ -151,6 +152,7 @@ public class AppsManager {
 	}
 
 	private void badFilesArchive(String message, Object... args) throws AppsException {
-		throw new AppsException("Fail to process files archive uploaded from |%s|. %s", context.getRemoteAddr(), String.format(message, args));
+		RequestContext context = container.getInstance(RequestContext.class);
+		throw new AppsException("Fail to process files archive uploaded from |%s|. %s", context.getRemoteHost(), String.format(message, args));
 	}
 }

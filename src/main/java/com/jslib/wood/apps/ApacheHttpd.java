@@ -5,22 +5,16 @@ import java.io.IOException;
 
 import js.log.Log;
 import js.log.LogFactory;
-import js.tiny.container.core.AppContext;
+import js.tiny.container.contextparam.ContextParam;
 
 final class ApacheHttpd {
-	/** Class logger. */
 	private static final Log log = LogFactory.getLog(ApacheHttpd.class);
 
-	private File DOC_ROOT;
+	@ContextParam("server.doc.root")
+	private static File DOC_ROOT;
 
-	public ApacheHttpd(AppContext context) {
+	public ApacheHttpd() {
 		log.trace("ApacheHttpdImpl(AppContext)");
-		String docRootProperty = context.getProperty("server.doc.root");
-		if (docRootProperty == null) {
-			log.info("Missing <server.doc.root> environment property. Server configured without doc root. It can be added to conf/properties.xml file, e.g. <property name='server.doc.root' value='/var/www/vhosts/' />");
-			return;
-		}
-		DOC_ROOT = new File(docRootProperty);
 	}
 
 	public File getProjectRoot(String path) throws IOException {
