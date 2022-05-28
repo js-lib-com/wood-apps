@@ -10,7 +10,7 @@ import js.tiny.container.contextparam.ContextParam;
 final class ApacheHttpd {
 	private static final Log log = LogFactory.getLog(ApacheHttpd.class);
 
-	@ContextParam("server.doc.root")
+	@ContextParam(name = "server.doc.root")
 	private static File DOC_ROOT;
 
 	public ApacheHttpd() {

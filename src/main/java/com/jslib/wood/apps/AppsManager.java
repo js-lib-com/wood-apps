@@ -11,6 +11,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import javax.annotation.security.PermitAll;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.Path;
 
@@ -18,8 +19,8 @@ import js.io.FilesInputStream;
 import js.io.FilesIterator;
 import js.log.Log;
 import js.log.LogFactory;
-import js.tiny.container.servlet.ITinyContainer;
 import js.tiny.container.servlet.RequestContext;
+import js.tiny.container.spi.ITinyContainer;
 import js.util.Files;
 
 @Singleton
@@ -30,6 +31,7 @@ public class AppsManager {
 	private final ITinyContainer container;
 	private final ApacheHttpd apache;
 
+	@Inject
 	public AppsManager(ITinyContainer container, ApacheHttpd apache) {
 		this.container = container;
 		this.apache = apache;

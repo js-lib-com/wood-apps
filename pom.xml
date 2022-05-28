@@ -39,7 +39,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.js-lib</groupId>
-			<artifactId>tiny-web</artifactId>
+			<artifactId>tiny-servlet</artifactId>
 			<version>1.3.2</version>
 			<scope>provided</scope>
 		</dependency>
