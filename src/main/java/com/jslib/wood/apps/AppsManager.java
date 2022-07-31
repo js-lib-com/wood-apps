@@ -10,11 +10,10 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import javax.annotation.security.PermitAll;
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import javax.ws.rs.Path;
-
+import jakarta.annotation.security.PermitAll;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
+import jakarta.ws.rs.Path;
 import js.io.FilesInputStream;
 import js.io.FilesIterator;
 import js.log.Log;
