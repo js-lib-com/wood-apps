@@ -3,8 +3,8 @@ package com.jslib.wood.apps;
 import java.io.File;
 import java.io.IOException;
 
-import js.log.Log;
-import js.log.LogFactory;
+import com.jslib.api.log.Log;
+import com.jslib.api.log.LogFactory;
 import js.tiny.container.contextparam.ContextParam;
 
 final class ApacheHttpd {
