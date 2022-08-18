@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.jslib.api.log.Log;
 import com.jslib.api.log.LogFactory;
-import js.tiny.container.contextparam.ContextParam;
+import com.jslib.container.contextparam.ContextParam;
 
 final class ApacheHttpd {
 	private static final Log log = LogFactory.getLog(ApacheHttpd.class);
